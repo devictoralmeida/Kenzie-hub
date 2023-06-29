@@ -4,57 +4,7 @@ import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
 import { TRegisterFormValues } from "../schemas/registerFormSchema";
 import { TLoginFormValues } from "../schemas/loginFormSchema";
-import { AxiosError } from "axios";
-import { ITech } from "./TechsContext";
-
-interface IUserContextProviderProps {
-  children: React.ReactNode;
-}
-
-export interface IUser {
-  id: string;
-  name: string;
-  email: string;
-  course_module: string;
-  bio: string;
-  contact: string;
-  created_at: Date;
-  updated_at: Date;
-  techs: ITech[];
-  works: string[];
-  avatar_url: string | null;
-}
-
-interface IUserWithToken {
-  user: IUser;
-  token: string;
-}
-
-interface IUserContext {
-  user: IUser | null;
-  globalLoading: boolean;
-  userLogin: (formData: TLoginFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>; 
-  userRegister: (formData: TRegisterFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
-  handleLogout: () => void;
-  setGlobalLoading: React.Dispatch<React.SetStateAction<boolean>>;
-}
-
-interface IUserRegisterResponse {
-  id: string;
-  name: string;
-  email: string;
-  course_module: string;
-  bio: string;
-  contact: string;
-  created_at: Date;
-  updated_at: Date;
-  avatar_url: string | null;
-}
-
-export interface IErrorResponse {
-  status: 'error';
-  message: string[];
-}
+import { IUser, IUserContext, IUserContextProviderProps, IUserRegisterResponse, IUserWithToken } from "./@types";
 
 export const UserContext = createContext({} as IUserContext);
 
@@ -99,10 +49,7 @@ export const UserContextProvider = ({ children }: IUserContextProviderProps) => 
       localStorage.setItem("@USERID", data.user.id);
       navigate(`/dashboard`);
     } catch (error) {
-      const curretError = error as AxiosError<IErrorResponse>
-      console.log(curretError)
-      // "Usuário não encontrado, por favor tente novamente"
-      toast.error(curretError.message, {
+      toast.error("Usuário não encontrado, por favor tente novamente", {
         className: "toast-error",
       });
     } finally {
@@ -119,10 +66,7 @@ export const UserContextProvider = ({ children }: IUserContextProviderProps) => 
       });
       navigate("/");
     } catch (error) {
-      const curretError = error as AxiosError<IErrorResponse>
-      console.log(curretError)
-      // "Oops! Algo deu errado"
-      toast.error(curretError.message, {
+      toast.error("Oops! Algo deu errado", {
         className: "toast-error",
       });
     } finally {

@@ -1,54 +1,10 @@
 import { createContext, useContext, useState } from "react";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
-import { IErrorResponse, useUserContext } from "./UserContext";
-import { AxiosError } from "axios";
+import { useUserContext } from "./UserContext";
 import { TEditTechFormValues } from "../schemas/editTechFormSchema";
 import { TAddTechFormValues } from "../schemas/addTechFormSchema";
-
-interface ITechsContextProviderProps {
-  children: React.ReactNode;
-}
-
-interface ITechsAddResponse {
-  id: string;
-  title: string;
-  status: "Iniciante" | "Intermediário" | "Avançado";
-  user: {
-    id: string;
-  }
-  created_at: Date;
-  updated_at: Date;
-}
-
-interface ITechsEditResponse {
-  id: string;
-  title: string;
-  status: "Iniciante" | "Intermediário" | "Avançado";
-  created_at: Date;
-  updated_at: Date;
-}
-
-export interface ITech {
-  id: string;
-  title: string;
-  status: "Iniciante" | "Intermediário" | "Avançado";
-  created_at: Date;
-  updated_at: Date;
-}
-
-interface ITechsContext {
-  addTech: (formData: TAddTechFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
-  removeTech: (techID: string, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
-  editTech: (techID: string, formData: TEditTechFormValues, setLoading: React.Dispatch<React.SetStateAction<boolean>>) => Promise<void>;
-  isAddModal: boolean;
-  isEditModal: boolean;
-  setIsAddModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setIsEditModal: React.Dispatch<React.SetStateAction<boolean>>;
-  setUpdatedTech: React.Dispatch<React.SetStateAction<ITech | null>>;
-  updatedTech: ITech | null;
-  techsLits: ITech[];
-}
+import { ITechsContext, ITechsContextProviderProps, ITech, ITechsAddResponse, ITechsEditResponse } from "./@types";
 
 export const TechsContext = createContext({} as ITechsContext);
 
@@ -74,10 +30,7 @@ export const TechsContextProvider = ({ children }: ITechsContextProviderProps) =
         className: "toast-sucess",
       });
     } catch (error) {
-      // "O usuário já possui essa tecnologia, basta atualiza-la"
-      const curretError = error as AxiosError<IErrorResponse>
-      console.log(curretError)
-      toast.error(curretError.message, {
+      toast.error("O usuário já possui essa tecnologia, basta atualiza-la", {
         className: "toast-error",
       });
     } finally {
@@ -102,10 +55,7 @@ export const TechsContextProvider = ({ children }: ITechsContextProviderProps) =
         className: "toast-sucess",
       });
     } catch (error) {
-      const curretError = error as AxiosError<IErrorResponse>
-      console.log(curretError)
-      // "Oops! Algo deu errado"
-      toast.error(curretError.message, {
+      toast.error("Oops! Algo deu errado", {
         className: "toast-error",
       });
     } finally {
@@ -138,10 +88,7 @@ export const TechsContextProvider = ({ children }: ITechsContextProviderProps) =
         className: "toast-sucess",
       });
     } catch (error) {
-      const curretError = error as AxiosError<IErrorResponse>
-      console.log(curretError)
-      // "Oops! Algo deu errado"
-      toast.error(curretError.message, {
+      toast.error("Oops! Algo deu errado", {
         className: "toast-error",
       });
     } finally {
