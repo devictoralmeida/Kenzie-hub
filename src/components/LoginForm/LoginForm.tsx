@@ -3,7 +3,7 @@ import HashLoader from "react-spinners/HashLoader";
 import Eye from "../../assets/eye.svg";
 import { StyledParagraph } from "../../styles/typography";
 import { StyledHeadline1 } from "../../styles/typography";
-import Input, { IFormError } from "../Input/Input";
+import Input from "../Input/Input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TLoginFormValues, loginFormSchema } from "../../schemas/loginFormSchema";
@@ -56,7 +56,7 @@ const LoginForm = () => {
             id="email"
             placeholder="Digite o seu email"
             label="Email"
-            error={errors.email as IFormError}
+            error={errors.email}
             disabled={loading}
             {...register("email")}
           />
@@ -66,7 +66,7 @@ const LoginForm = () => {
               id="password"
               placeholder="Digite a sua senha"
               label="Senha"
-              error={errors.password as IFormError}
+              error={errors.password}
               disabled={loading}
               {...register("password")}
             />

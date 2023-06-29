@@ -1,14 +1,11 @@
 import { StyledSpan } from "../../styles/typography";
-import React, { ForwardedRef, InputHTMLAttributes, forwardRef } from "react";
+import { ForwardedRef, InputHTMLAttributes, forwardRef } from "react";
 import { InputStyles } from "../../styles/form";
-
-export interface IFormError {
-  message: string | React.ReactElement;
-}
+import { FieldError } from "react-hook-form";
 
 interface IInputProps extends InputHTMLAttributes<HTMLInputElement> {
   label?: string;
-  error?: IFormError;
+  error?: FieldError;
 }
 
 const Input = forwardRef(

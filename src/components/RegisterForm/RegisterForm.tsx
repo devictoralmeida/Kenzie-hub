@@ -2,7 +2,7 @@ import { FormStyles } from "../../styles/form";
 import HashLoader from "react-spinners/HashLoader";
 import { StyledParagraph } from "../../styles/typography";
 import { StyledHeadline1 } from "../../styles/typography";
-import Input, { IFormError } from "../Input/Input";
+import Input from "../Input/Input";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
 import { TRegisterFormValues, registerFormSchema } from "../../schemas/registerFormSchema";
@@ -48,7 +48,7 @@ const RegisterForm = () => {
             id="name"
             placeholder="Digite aqui o seu nome"
             label="Nome"
-            error={errors.name as IFormError}
+            error={errors.name}
             disabled={loading}
             {...register("name")}
           />
@@ -57,7 +57,7 @@ const RegisterForm = () => {
             id="email"
             placeholder="Digite aqui seu email"
             label="Email"
-            error={errors.email as IFormError}
+            error={errors.email}
             disabled={loading}
             {...register("email")}
           />
@@ -66,7 +66,7 @@ const RegisterForm = () => {
             id="password"
             placeholder="Digite aqui sua senha"
             label="Senha"
-            error={errors.password as IFormError}
+            error={errors.password}
             disabled={loading}
             {...register("password")}
           />
@@ -75,7 +75,7 @@ const RegisterForm = () => {
             id="confirm"
             placeholder="Digite novamente sua senha"
             label="Confirmar Senha"
-            error={errors.confirm as IFormError}
+            error={errors.confirm}
             disabled={loading}
             {...register("confirm")}
           />
@@ -83,7 +83,7 @@ const RegisterForm = () => {
             type="text"
             id="bio"
             placeholder="Fale sobre você"
-            error={errors.bio as IFormError}
+            error={errors.bio}
             label="Bio"
             disabled={loading}
             {...register("bio")}
@@ -93,14 +93,14 @@ const RegisterForm = () => {
             id="contact"
             placeholder="Opção de contato"
             label="Contato"
-            error={errors.contact as IFormError}
+            error={errors.contact}
             disabled={loading}
             {...register("contact")}
           />
           <Select
             id="course_module"
             label="Selecionar módulo"
-            error={errors.course_module as IFormError}
+            error={errors.course_module}
             disabled={loading}
             {...register("course_module")}
           >

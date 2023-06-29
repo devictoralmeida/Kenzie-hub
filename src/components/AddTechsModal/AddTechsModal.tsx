@@ -5,7 +5,7 @@ import { StyledTechsModal } from "./style";
 import { SubmitHandler, useForm } from "react-hook-form";
 import { TAddTechFormValues, addTechFormSchema } from "../../schemas/addTechFormSchema";
 import Select from "../Select/Select";
-import Input, { IFormError } from "../Input/Input";
+import Input from "../Input/Input";
 import { StyledButton } from "../../styles/buttons";
 import { useTechsContext } from "../../providers/TechsContext";
 import { useState } from "react";
@@ -56,14 +56,14 @@ const AddTechsModal = () => {
             id="title"
             placeholder="Digite aqui o nome da tecnologia"
             label="Nome"
-            error={errors.title as IFormError}
+            error={errors.title}
             disabled={loading}
             {...register("title")}
           />
           <Select
             id="status"
             label="Selecionar status"
-            error={errors.status as IFormError}
+            error={errors.status}
             disabled={loading}
             {...register("status")}
           >

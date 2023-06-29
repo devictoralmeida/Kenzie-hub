@@ -1,12 +1,12 @@
 import { SelectStyles } from "../../styles/form";
 import React, { ForwardedRef, SelectHTMLAttributes, forwardRef } from "react";
 import { StyledSpan } from "../../styles/typography";
-import { IFormError } from "../Input/Input";
+import { FieldError } from "react-hook-form";
 
 interface ISelectInputProps extends SelectHTMLAttributes<HTMLSelectElement> {
   children: React.ReactNode;
   label?: string;
-  error?: IFormError;
+  error?: FieldError;
 }
 
 const Select = forwardRef(({ children, label, id, error, ...rest }: ISelectInputProps, ref: ForwardedRef<HTMLSelectElement>) => {
