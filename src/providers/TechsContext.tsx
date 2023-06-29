@@ -119,3 +119,4 @@ export const TechsContextProvider = ({ children }: ITechsContextProviderProps) =
 };
 
 export const useTechsContext = () => useContext(TechsContext);
+
