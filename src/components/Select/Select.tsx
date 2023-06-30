@@ -1,5 +1,5 @@
 import { SelectStyles } from "../../styles/form";
-import React, { ForwardedRef, SelectHTMLAttributes, forwardRef } from "react";
+import { SelectHTMLAttributes, forwardRef } from "react";
 import { StyledSpan } from "../../styles/typography";
 import { FieldError } from "react-hook-form";
 
@@ -9,7 +9,7 @@ interface ISelectInputProps extends SelectHTMLAttributes<HTMLSelectElement> {
   error?: FieldError;
 }
 
-const Select = forwardRef(({ children, label, id, error, ...rest }: ISelectInputProps, ref: ForwardedRef<HTMLSelectElement>) => {
+const Select = forwardRef<HTMLSelectElement, ISelectInputProps>(({ children, label, id, error, ...rest }, ref) => {
   return (
     <div className="input-container">
       {label ? <label htmlFor={id}>{label}</label> : null}
