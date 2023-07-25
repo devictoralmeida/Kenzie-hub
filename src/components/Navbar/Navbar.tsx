@@ -1,5 +1,4 @@
 import { NavStyles } from "./style";
-import Logo from "../../assets/Logo.svg";
 import { StyledButton, StyledLink } from "../../styles/buttons";
 import { useUserContext } from "../../providers/UserContext";
 
@@ -13,7 +12,7 @@ const Navbar = ({ isbutton = 'false', text }: NavbarProps) => {
 
   return (
     <NavStyles isbutton={ isbutton === 'true' ? 'true' : 'false'}>
-      <img src={Logo} alt="Logo da Kenzie Hub" />
+      <p className="logo">Tech Tracker</p>
       {isbutton === 'true' && text === "Voltar" ? (
         <StyledLink to="/" buttonsize="medium" buttonstyle="disabled">
           {text}

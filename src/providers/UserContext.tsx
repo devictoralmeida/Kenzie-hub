@@ -1,4 +1,4 @@
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useEffect, useMemo, useState } from "react";
 import { api } from "../services/api";
 import { toast } from "react-toastify";
 import { useNavigate } from "react-router-dom";
@@ -14,7 +14,7 @@ export const UserContextProvider = ({ children }: IUserContextProviderProps) => 
 
   const navigate = useNavigate();
 
-  const currentPath = window.location.pathname;
+  const currentPath = useMemo(() => window.location.pathname, []);
   const localUserToken = localStorage.getItem("@TOKEN");
 
   useEffect(() => {

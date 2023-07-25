@@ -27,6 +27,7 @@ export const GlobalStyle = createGlobalStyle`
     width: 100vw;
     overflow-x: hidden;
     background-color: var(--color-grey-4);
+    -webkit-font-smoothing: antialiased;
   }
 
   html, body, input, button, textarea {

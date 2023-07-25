@@ -1,6 +1,6 @@
 import axios from "axios";
 
 export const api = axios.create({
-  baseURL: "https://kenziehub.herokuapp.com",
+  baseURL: "https://tech-tracker.onrender.com",
   timeout: 8000,
 });
