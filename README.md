@@ -1,4 +1,4 @@
-O Kenzie hub é um site onde você pode acompanhar as tecnologias que conhece e permite atualizar seu nível de conhecimento sobre elas.
+O Tech Tracker é um site onde você pode acompanhar as tecnologias que conhece e permite atualizar seu nível de conhecimento sobre elas.
 
 Essa aplicação consiste em uma página de login, página de cadastro de usuário e uma página de dashboard (onde apenas usuários que fizeram o login podem ter acesso). Caso o usuário já tenha feito o login e fechou o navegador, quando ele entrar novamente no site, será redirecionado automaticamente para a rota de dashboard.
 
